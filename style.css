@@ -1,0 +1,188 @@
+/* ---------- Reset & Variables ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --dark: #0f172a;
+  --text: #334155;
+  --light: #f1f5f9;
+  --white: #ffffff;
+  --radius: 10px;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Smooth scrolling for in-page anchor links */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--white);
+}
+
+/* Fluid images */
+/* FLUID IMAGES: never wider than their container; height auto preserves aspect ratio */
+img { max-width: 100%; height: auto; display: block; }
+
+/* CONTAINER: 90% fluid width capped at 1140px, centred; keeps line lengths readable on wide monitors */
+.container { width: 90%; max-width: 1140px; margin: 0 auto; }
+
+/* FLUID TYPOGRAPHY: clamp(min, preferred, max) scales headings smoothly with viewport width, no breakpoint needed */
+h1 { font-size: clamp(1.9rem, 5vw, 3.2rem); line-height: 1.2; color: var(--dark); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); color: var(--dark); margin-bottom: 1.5rem; text-align: center; }
+h3 { font-size: 1.2rem; color: var(--dark); margin-bottom: 0.5rem; }
+
+/* ---------- Header / Navigation (mobile first) ---------- */
+/* STICKY HEADER: stays visible while scrolling; z-index keeps it above content */
+.site-header { background: var(--dark); position: sticky; top: 0; z-index: 100; }
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+  flex-wrap: wrap;
+}
+.logo { color: var(--white); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
+.logo span { color: #60a5fa; }
+
+/* CSS-ONLY HAMBURGER: hidden checkbox + label. The label's span and its ::before/::after draw three bars */
+.nav-toggle { display: none; }
+.nav-toggle-label { cursor: pointer; padding: 10px; }
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  position: relative;
+  content: "";
+}
+.nav-toggle-label span::before { position: absolute; top: -8px; }
+.nav-toggle-label span::after  { position: absolute; top: 8px; }
+
+/* MOBILE NAV: hidden by default, shown when the checkbox is :checked (sibling selector ~) */
+.main-nav { width: 100%; display: none; }
+.nav-toggle:checked ~ .main-nav { display: block; }
+.main-nav ul { list-style: none; }
+.main-nav a {
+  display: block;
+  padding: 0.8rem 0;
+  color: var(--white);
+  text-decoration: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.main-nav a:hover { color: #60a5fa; }
+
+/* ---------- Buttons ---------- */
+/* BUTTON: reusable component for links and form buttons */
+.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn:hover { background: var(--primary-dark); }
+
+/* ---------- Hero ---------- */
+/* HERO: single column on mobile; becomes two columns at 768px (see media queries) */
+.hero { background: var(--light); padding: 3rem 0; }
+.hero-inner { display: grid; gap: 2rem; align-items: center; text-align: center; }
+.hero-text p { margin: 1rem 0 1.5rem; }
+.hero-img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; }
+
+/* ---------- Sections ---------- */
+.section { padding: 3.5rem 0; }
+.section-alt { background: var(--light); }
+
+/* GRID BASE: shared gap; column counts are set per component and changed in media queries */
+.grid { display: grid; gap: 1.5rem; }
+.features-grid { grid-template-columns: 1fr; }
+.gallery-grid  { grid-template-columns: 1fr; }
+
+/* CARD: white panel with accent border and soft shadow */
+.card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary);
+}
+
+/* GALLERY ITEMS: overflow hidden clips the hover zoom; aspect-ratio + object-fit keep uniform tiles */
+figure { overflow: hidden; border-radius: var(--radius); box-shadow: var(--shadow); background: var(--white); }
+figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform 0.4s; }
+figure:hover img { transform: scale(1.05); }
+figcaption { padding: 0.6rem 1rem; font-weight: 600; text-align: center; }
+
+/* ---------- Contact ---------- */
+/* CONTACT: stacked on mobile, two columns from 768px. Form uses Flexbox column layout */
+.contact-wrap { display: grid; gap: 2rem; }
+.contact-wrap h2 { text-align: left; }
+.contact-form { display: flex; flex-direction: column; gap: 0.5rem; }
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font: inherit;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { outline: 2px solid var(--primary); border-color: transparent; }
+.contact-form .btn { margin-top: 0.8rem; align-self: flex-start; }
+
+/* ---------- Footer ---------- */
+/* FOOTER */
+.site-footer { background: var(--dark); color: #cbd5e1; text-align: center; padding: 1.5rem 0; }
+
+/* =========================================================
+   MEDIA QUERIES
+   ========================================================= */
+
+/* MOBILE-FIRST STRATEGY: base rules above target phones; each min-width query below ADDS rules for larger screens */
+/* Tablets (600px and up) */
+@media (min-width: 600px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Small laptops / large tablets (768px and up) */
+@media (min-width: 768px) {
+  .nav-toggle-label { display: none; }
+  .main-nav { display: block; width: auto; }
+  .main-nav ul { display: flex; gap: 1.5rem; }
+  .main-nav a { border-top: none; padding: 0.5rem 0; }
+
+  .hero { padding: 5rem 0; }
+  .hero-inner { grid-template-columns: 1fr 1fr; text-align: left; }
+  .contact-wrap { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+/* Desktops (1024px and up) */
+@media (min-width: 1024px) {
+  .features-grid { grid-template-columns: repeat(4, 1fr); }
+  .gallery-grid  { grid-template-columns: repeat(3, 1fr); }
+  .section { padding: 5rem 0; }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .btn { width: 100%; text-align: center; }
+  .card { padding: 1rem; }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}

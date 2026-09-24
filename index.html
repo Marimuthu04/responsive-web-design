@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechNova - a responsive web design demonstration">
+  <title>TechNova | Responsive Web Design</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER: logo + navigation. Checkbox/label pair powers the mobile menu without JavaScript -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">Tech<span>Nova</span></a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+        <span></span>
+      </label>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN: primary content, one landmark per page (accessibility) -->
+  <main>
+    <!-- HERO: headline, intro text, call-to-action and fluid image -->
+  <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Build Websites That Fit Every Screen</h1>
+          <p>Flexible grids, fluid images and smart media queries deliver a great experience on desktops, tablets and smartphones.</p>
+          <a href="#features" class="btn">Explore Features</a>
+        </div>
+        <img class="hero-img" src="images/hero.svg" alt="Abstract illustration of a responsive layout">
+      </div>
+    </section>
+
+    <!-- FEATURES: four <article> cards in a responsive grid (1/2/4 columns) -->
+  <section id="features" class="section">
+      <div class="container">
+        <h2>Our Features</h2>
+        <div class="grid features-grid">
+          <article class="card">
+            <h3>Flexible Grid</h3>
+            <p>Layouts built with CSS Grid and Flexbox that reflow automatically as the viewport changes.</p>
+          </article>
+          <article class="card">
+            <h3>Fluid Images</h3>
+            <p>Images scale within their containers and never overflow, keeping their aspect ratio.</p>
+          </article>
+          <article class="card">
+            <h3>Media Queries</h3>
+            <p>Breakpoints adjust layout, spacing and font sizes for tablets and phones.</p>
+          </article>
+          <article class="card">
+            <h3>Readable Type</h3>
+            <p>Font sizes use relative units and clamp() so text stays comfortable everywhere.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY: <figure>/<figcaption> items in a responsive grid (1/2/3 columns) -->
+  <section id="gallery" class="section section-alt">
+      <div class="container">
+        <h2>Gallery</h2>
+        <div class="grid gallery-grid">
+          <figure><img src="images/gallery-1.svg" alt="Green hills under a blue sky"><figcaption>Valley</figcaption></figure>
+          <figure><img src="images/gallery-2.svg" alt="Purple mountain peaks"><figcaption>Mountains</figcaption></figure>
+          <figure><img src="images/gallery-3.svg" alt="Warm sunset circles"><figcaption>Sunset</figcaption></figure>
+          <figure><img src="images/gallery-4.svg" alt="Blue ocean waves"><figcaption>Ocean</figcaption></figure>
+          <figure><img src="images/gallery-5.svg" alt="Rolling green fields"><figcaption>Fields</figcaption></figure>
+          <figure><img src="images/gallery-6.svg" alt="City skyline at dusk"><figcaption>City</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT: text + labelled form (label/for pairs for accessibility) -->
+  <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <div>
+          <h2>Get in Touch</h2>
+          <p>Have a project in mind? Send us a message and we will reply soon.</p>
+        </div>
+        <form class="contact-form" action="#" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: copyright -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 TechNova. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
